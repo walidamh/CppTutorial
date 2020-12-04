@@ -20,6 +20,8 @@ class List
 
         vector<vector<string>> mainList;
 
+        int currentUsrIdx;
+
         // Constructor & Destructor
         List();
         ~List();
@@ -31,7 +33,10 @@ class List
         void delete_item();
 
         //
-        void find_userList();
+        bool find_userList();
+
+        //
+        void save_list();
 
     protected:
         

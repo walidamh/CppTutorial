@@ -13,6 +13,7 @@ int main(int arg_count, char *args[])
         list1.mainList = db1.read();
         list1.find_userList();
         list1.print_menu();
+        db1.write(list1.mainList);
     }
     else
     {

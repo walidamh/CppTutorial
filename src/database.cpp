@@ -12,12 +12,20 @@ void Database::write(vector<vector<string>> mainList_)
     // write the list
     if (db.is_open())
     {
-        for (unsigned int i = 0; i < mainList_[i].size(); i++)
+        for (unsigned int i = 0; i < mainList_.size(); i++)              // all users list
         {
-            for (unsigned int j = 0; j < mainList_[i][j].size(); j++ )
+            for (unsigned int j = 0; j < mainList_[i].size(); j++ )     // one specific user list
             {
-                db << mainList_[i][j] << endl;
+                if ( j == 0 )
+                {
+                    db << "#" << mainList_[i][j] << endl; // username
+                }
+                else
+                {
+                    db << mainList_[i][j] << endl;         //items
+                }
             }
+            db << "%" << endl;                             // end of user's items
         }
     }
     else

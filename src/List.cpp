@@ -11,8 +11,9 @@ void List::print_menu()
     cout << "1- Print list.\n";
     cout << "2- Add to list.\n";
     cout << "3- Delete from list.\n";
-    cout << "4- Quit.\n";
-    cout << "Enter your choice ( 0 < int < 5 ) and press return: ";
+    cout << "4- Save List.\n";
+    cout << "5- Quit.\n";
+    cout << "Enter your choice ( 0 < int < 6 ) and press return: ";
     cin >> choice;
 
     switch (choice)
@@ -27,6 +28,9 @@ void List::print_menu()
         delete_item();
         break;
     case 4:
+        save_list();
+        break;
+    case 5:
         return;
         break;
     default:
@@ -108,7 +112,7 @@ void List::print_list()
 }
 
 // find user
-void List::find_userList()
+bool List::find_userList()
 {
     bool userFound = false;
     cout << "find_userList function. \n";
@@ -121,8 +125,26 @@ void List::find_userList()
         {
             cout << "user has been found: " << mainList[i][0] << endl;
             list = mainList[i];
+            currentUsrIdx = i;
             userFound = true;
             break;
         }
     }
+
+    if ( userFound == false )
+    {
+        list.push_back(name);
+        mainList.push_back(list);
+        currentUsrIdx = (int)mainList.size() - 1;
+    }
+
+    return userFound;
+}
+
+
+void List::save_list()
+{
+    cout << "save_list function. " << endl;
+    mainList[currentUsrIdx] = list;
+    print_menu();
 }
